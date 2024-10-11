@@ -11,8 +11,10 @@ if "%~1"=="" (
 ) else (
     if "%~1"=="01" (
         set "LAB_NO=%~1"
+    ) else if "%~1"=="02" (
+        set "LAB_NO=%~1"
     ) else (
-        echo Usage: %~nx0 ^<lab-no^> ^(01 - 01^)
+        echo Usage: %~nx0 ^<lab-no^> ^(01 - 02^)
         exit /b 0
     )
 )
@@ -20,11 +22,21 @@ if "%~1"=="" (
 rem Check if second argument (exercise number) is provided
 if not "%~2"=="" (
     if "%~2"=="01" (
-        set "LAB_EX=01"
+        set "LAB_EX=%~2"
     ) else if "%~2"=="02" (
-        set "LAB_EX=02"
+        set "LAB_EX=%~2"
     ) else if "%~2"=="03" (
-        set "LAB_EX=03"
+        set "LAB_EX=%~2"
+    ) else if "%~2"=="04" (
+        set "LAB_EX=%~2"
+    ) else if "%~2"=="05" (
+        set "LAB_EX=%~2"
+    ) else if "%~2"=="06" (
+        set "LAB_EX=%~2"
+    ) else if "%~2"=="07" (
+        set "LAB_EX=%~2"
+    ) else if "%~2"=="08" (
+        set "LAB_EX=%~2"
     ) else (
         set "LAB_EX=0"
     )

@@ -6,8 +6,9 @@ if [ -z "$1" ]; then
 else
     case "$1" in
         "01") LAB_NO=$1;;
+        "02") LAB_NO=$1;;
         *) 
-            echo "usage: $0 <lab-no> (01 - 01)"
+            echo "usage: $0 <lab-no> (01 - 02)"
             exit 0;;
     esac
 fi
