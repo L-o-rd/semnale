@@ -27,7 +27,7 @@ plt.pcolormesh(times, frequencies, 10 * np.log10(spectrogram_matrix), shading='g
 plt.colorbar(label='Intensitate (dB)')
 plt.ylabel('Frecventa (Hz)')
 plt.xlabel('Timp (s)')
-plt.title('Spectograma')
+plt.title('Spectrograma')
 plt.ylim(0, 7000)
 plt.savefig('./labs/04/06.pdf')
 plt.show()
