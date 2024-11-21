@@ -26,7 +26,7 @@ def pade(alpha):
 
 if __name__ == '__main__':
     x = np.linspace(start = -np.pi / 2, stop = np.pi / 2, num = 10 ** 3)
-    error = np.sin(x) - x
+    error = np.abs(np.sin(x) - x)
     fig, axs = plt.subplots(4)
     axs[0].set_title('sin(x)', fontstyle='italic')
     axs[0].plot(x, np.sin(x))
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     plt.savefig('./labs/02/08.pdf')
     plt.show()
 
-    error = np.sin(x) - pade(x)
+    error = np.abs(np.sin(x) - pade(x))
     fig, axs = plt.subplots(4)
     axs[0].set_title('sin(x)', fontstyle='italic')
     axs[0].plot(x, np.sin(x))
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     plt.savefig('./labs/02/08p.pdf')
     plt.show()
 
-    error = np.sin(x) - taylor(x)
+    error = np.abs(np.sin(x) - taylor(x))
     fig, axs = plt.subplots(4)
     axs[0].set_title('sin(x)', fontstyle='italic')
     axs[0].plot(x, np.sin(x))
@@ -68,9 +68,9 @@ if __name__ == '__main__':
     plt.savefig('./labs/02/08t.pdf')
     plt.show()
 
-    plt.plot(x, np.sin(x) - x, marker='o', label='Identity Error', color='blue')
-    plt.plot(x, np.sin(x) - pade(x), marker='o', label='Pade Error', color='orange')
-    plt.plot(x, np.sin(x) - taylor(x), marker='o', label='Taylor Error', color='green')
+    plt.plot(x, np.abs(np.sin(x) - x), marker='o', label='Identity Error', color='blue')
+    plt.plot(x, np.abs(np.sin(x) - pade(x)), marker='o', label='Pade Error', color='orange')
+    plt.plot(x, np.abs(np.sin(x) - taylor(x)), marker='o', label='Taylor Error', color='green')
     plt.yscale('log')
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.legend()
