@@ -13,11 +13,11 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("Liniar Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02a.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02a.pdf')
     plt.show()
 
     # (2) Wiener
@@ -31,11 +31,11 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("Wiener Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02b.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02b.pdf')
     plt.show()
 
     # (3) Radial Basis Function
@@ -50,11 +50,11 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("RBF Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02c.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02c.pdf')
     plt.show()
 
     # (4) Ornstein - Uhlenbeck
@@ -69,11 +69,11 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("Ornstein - Uhlenbeck Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02d.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02d.pdf')
     plt.show()
 
     # (5) Periodic
@@ -89,11 +89,11 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("Periodic Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02e.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02e.pdf')
     plt.show()
 
     # (6) Simetric
@@ -115,9 +115,9 @@ if __name__ == '__main__':
     plt.figure(figsize = (10, 5))
     plt.title("Symmetric Process")
     plt.plot(x, samples.T)
-    plt.savefig('./labs/10/02f.pdf')
     plt.tight_layout()
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.grid()
+    plt.savefig('./labs/10/02f.pdf')
     plt.show()

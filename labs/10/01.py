@@ -32,8 +32,8 @@ if __name__ == '__main__':
     plt.xlabel("X")
     plt.ylabel("φ(X)")
     plt.tight_layout()
-    plt.savefig('./labs/10/01a.pdf')
     plt.legend()
+    plt.savefig('./labs/10/01a.pdf')
     plt.show()
 
     plt.figure(figsize = (10, 5))
@@ -42,8 +42,8 @@ if __name__ == '__main__':
     samples = gauss(10 ** 3)
     plt.hist(samples, bins = 30, density = True, alpha = 0.6, color = 'b')
     plt.tight_layout()
-    plt.savefig('./labs/10/01b.pdf')
     plt.legend()
+    plt.savefig('./labs/10/01b.pdf')
     plt.show()
 
     mean = [0, 0]

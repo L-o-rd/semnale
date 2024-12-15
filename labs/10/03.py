@@ -65,8 +65,8 @@ if __name__ == '__main__':
     axs[3].plot(Xp, yp, 'r-', label = 'Prediction (last 12 months)')
     axs[3].fill_between(Xp.ravel(), yp - ystd, yp + ystd, color='r', alpha=0.2, label="Confidence Interval")
     axs[3].legend()
-    plt.savefig('./labs/10/03a.pdf')
     plt.tight_layout()
+    plt.savefig('./labs/10/03a.pdf')
     plt.show()
 
     def rbf(x, y, l = 1.0, s = 1.0):
