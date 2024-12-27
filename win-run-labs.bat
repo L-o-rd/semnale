@@ -25,8 +25,16 @@ if "%~1"=="" (
         set "LAB_NO=%~1"
     ) else if "%~1"=="08" (
         set "LAB_NO=%~1"
+    ) else if "%~1"=="09" (
+        set "LAB_NO=%~1"
+    ) else if "%~1"=="10" (
+        set "LAB_NO=%~1"
+    ) else if "%~1"=="11" (
+        set "LAB_NO=%~1"
+    ) else if "%~1"=="12" (
+        set "LAB_NO=%~1"
     ) else (
-        echo Usage: %~nx0 ^<lab-no^> ^(01 - 08^)
+        echo Usage: %~nx0 ^<lab-no^> ^(01 - 12^)
         exit /b 0
     )
 )
