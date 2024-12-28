@@ -160,20 +160,25 @@ class AR:
         self.c[:solution.size[0], :solution.size[1]] = solution[:, :]
         self.c = self.c.flatten()
 
-    def greedy(self, y, mp = 2):
-        bvar = float('inf')
-        bc = None
-        bp = mp
+    def greedy(self, y, p = 2):
+        n = len(y)
+        c = np.zeros(p)
+        for i in range(p):
+            def obj(coef_i):
+                tmp = c.copy()
+                tmp[i] = coef_i[0]
+                
+                residuals = y[p:] - np.dot(
+                    np.column_stack([y[p-j-1:n-j-1] for j in range(p)]), 
+                    tmp
+                )
 
-        for p in range(1, mp + 1):
-            self.fit(y, p)
-            if self.var < bvar:
-                bvar = self.var
-                bc = self.c
-                bp = p
+                return np.var(residuals)
+            
+            result = sp.optimize.minimize(obj, c[i])
+            c[i] = result.x[0]
 
-        self.var, self.c = bvar, bc
-        return bp
+        self.c = c
 
     def predict(self, y, steps = 1):
         p = len(self.c)
