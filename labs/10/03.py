@@ -1,12 +1,10 @@
+from sklearn.gaussian_process.kernels import ConstantKernel as C
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.gaussian_process.kernels import RBF
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import WhiteKernel
-from sklearn.gaussian_process.kernels import RationalQuadratic
-from sklearn.gaussian_process.kernels import ExpSineSquared
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
-import matplotlib.pyplot as plt
 import scipy as sp
 
 if __name__ == '__main__':
@@ -105,42 +103,3 @@ if __name__ == '__main__':
     #    irregular = 0.25 / (1 + np.dot(x, y.T) / 2.0)
     #    noise = 0.01 * rbf(x, y, 0.1) + np.array([[0.01 if np.abs(yj - xi) < 0.001 else 0 for yj in y] for xi in x])
     #    return season + irregular + noise
-
-    long_term_trend_kernel = 50.0**2 * RBF(length_scale=50.0)
-    seasonal_kernel = (
-        2.0**2
-        * RBF(length_scale=100.0)
-        * ExpSineSquared(length_scale=1.0, periodicity=1.0, periodicity_bounds="fixed")
-    )
-
-    irregularities_kernel = 0.5**2 * RationalQuadratic(length_scale=1.0, alpha=1.0)
-    noise_kernel = 0.1**2 * RBF(length_scale=0.1) + WhiteKernel(
-        noise_level=0.1**2, noise_level_bounds=(1e-5, 1e5)
-    )
-
-    co2_kernel = (
-        long_term_trend_kernel + seasonal_kernel + irregularities_kernel + noise_kernel
-    )
-
-    l = -120
-    A = monthly.iloc[:l]
-    X = np.arange(len(A)).reshape(-1, 1)
-    y = A['PPM'].values
-    my = y.mean()
-
-    gaussian_process = GaussianProcessRegressor(kernel=co2_kernel, normalize_y=False)
-    gaussian_process.fit(X, y - my)
-
-    X_test = np.linspace(0, monthly.shape[0] - 1, 10 ** 3).reshape(-1, 1)
-    mean_y_pred, std_y_pred = gaussian_process.predict(X_test, return_std=True)
-    mean_y_pred += my
-
-    plt.figure(figsize = (10, 6))
-    plt.plot(monthly['PPM'], 'b--', label = 'Actual')
-    plt.plot(X_test, mean_y_pred, 'g-', lw = 2, label = '$\mu$')
-    plt.plot(X, y, 'r--', label = '$y_{A}$')
-    plt.fill_between(X_test.ravel(), mean_y_pred - 2 * std_y_pred, mean_y_pred + 2 * std_y_pred, color = 'tab:green', alpha = 0.2, label = '$2\sigma$')
-    plt.legend()
-    plt.savefig('./labs/10/03c.pdf')
-    plt.show()
-
